@@ -14,6 +14,7 @@ class DropColumns(BaseEstimator, TransformerMixin):
         data = X.copy()
         # Retornamos um novo dataframe sem as colunas indesejadas
         return data.drop(labels=self.columns, axis='columns')
+
 class Drop_allzeros_rows(BaseEstimator, TransformerMixin):
     def __init__(self):
         return None
@@ -56,7 +57,7 @@ class Rank_col(BaseEstimator, TransformerMixin):
     def transform(self, X):
         data = X.copy()
         
-        temp = new_data.copy()
+        temp = data.copy()
         
         temp['H_AULA_PRES'] = (data['H_AULA_PRES'] - data['H_AULA_PRES'].min()) / (data['H_AULA_PRES'].max() - data['H_AULA_PRES'].min())
         temp['TAREFAS_ONLINE'] = (data['TAREFAS_ONLINE'] - data['TAREFAS_ONLINE'].min()) / (data['TAREFAS_ONLINE'].max() - data['TAREFAS_ONLINE'].min())
